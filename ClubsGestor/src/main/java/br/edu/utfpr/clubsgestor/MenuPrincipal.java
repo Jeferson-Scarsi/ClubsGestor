@@ -40,8 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JToolBar.Separator();
         bntMenuSocios = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        btnMenuContasPagar = new javax.swing.JButton();
-        btnMenuContasReceber = new javax.swing.JButton();
+        btnMenuFinanceiro = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JToolBar.Separator();
         btnMenuSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -95,37 +94,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bntMenuSocios.setFocusable(false);
         bntMenuSocios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bntMenuSocios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        bntMenuSocios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntMenuSociosActionPerformed(evt);
-            }
-        });
         jToolBar1.add(bntMenuSocios);
         jToolBar1.add(jSeparator5);
 
-        btnMenuContasPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/contas-a-pagar.png"))); // NOI18N
-        btnMenuContasPagar.setText("Contas a Pagar");
-        btnMenuContasPagar.setFocusable(false);
-        btnMenuContasPagar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMenuContasPagar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMenuContasPagar.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuFinanceiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/contas-a-pagar.png"))); // NOI18N
+        btnMenuFinanceiro.setText("Financeiro");
+        btnMenuFinanceiro.setFocusable(false);
+        btnMenuFinanceiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMenuFinanceiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMenuFinanceiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuContasPagarActionPerformed(evt);
+                btnMenuFinanceiroActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnMenuContasPagar);
-
-        btnMenuContasReceber.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/contas-a-receber.png"))); // NOI18N
-        btnMenuContasReceber.setText("Contas a Receber");
-        btnMenuContasReceber.setFocusable(false);
-        btnMenuContasReceber.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMenuContasReceber.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMenuContasReceber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuContasReceberActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnMenuContasReceber);
+        jToolBar1.add(btnMenuFinanceiro);
         jToolBar1.add(jSeparator9);
 
         btnMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/sair.png"))); // NOI18N
@@ -221,7 +203,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +265,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void mniContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniContasPagarActionPerformed
         // TODO add your handling code here:
-        ContasPagar janela = new ContasPagar();
+        Financeiro janela = new Financeiro();
         janela.setVisible(true);
         
         desktopPane.add(janela);
@@ -292,11 +274,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void mniContasReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniContasReceberActionPerformed
         // TODO add your handling code here:
-        ContasReceber janela = new ContasReceber();
-        janela.setVisible(true);
-        
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
     }//GEN-LAST:event_mniContasReceberActionPerformed
 
     private void btnMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuUsuariosActionPerformed
@@ -308,32 +285,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setContentPane(desktopPane);
     }//GEN-LAST:event_btnMenuUsuariosActionPerformed
 
-    private void bntMenuSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntMenuSociosActionPerformed
+    private void btnMenuFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuFinanceiroActionPerformed
         // TODO add your handling code here:
-        CadastroSocios janela = new CadastroSocios();
+        Financeiro janela = new Financeiro();
         janela.setVisible(true);
         
         desktopPane.add(janela);
         this.setContentPane(desktopPane);
-    }//GEN-LAST:event_bntMenuSociosActionPerformed
-
-    private void btnMenuContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuContasPagarActionPerformed
-        // TODO add your handling code here:
-        ContasPagar janela = new ContasPagar();
-        janela.setVisible(true);
-        
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
-    }//GEN-LAST:event_btnMenuContasPagarActionPerformed
-
-    private void btnMenuContasReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuContasReceberActionPerformed
-        // TODO add your handling code here:
-        ContasReceber janela = new ContasReceber();
-        janela.setVisible(true);
-        
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
-    }//GEN-LAST:event_btnMenuContasReceberActionPerformed
+    }//GEN-LAST:event_btnMenuFinanceiroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,8 +332,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntMenuSocios;
     private javax.swing.JButton btnMenuClube;
-    private javax.swing.JButton btnMenuContasPagar;
-    private javax.swing.JButton btnMenuContasReceber;
+    private javax.swing.JButton btnMenuFinanceiro;
     private javax.swing.JButton btnMenuSair;
     private javax.swing.JButton btnMenuUsuarios;
     private javax.swing.JMenu jMenu1;
