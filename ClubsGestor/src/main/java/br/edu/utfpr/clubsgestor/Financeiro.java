@@ -32,64 +32,64 @@ public class Financeiro extends javax.swing.JInternalFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtCodSocioPesq = new javax.swing.JTextField();
+        lblNumTitulo = new javax.swing.JLabel();
+        txtNumTituloPesq = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        rbtContasPagar = new javax.swing.JRadioButton();
-        rbtContasReceber = new javax.swing.JRadioButton();
+        tblTituloPesq = new javax.swing.JTable();
+        optContasPagarPesq = new javax.swing.JRadioButton();
+        optContasReceberPesq = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtNumTitulo = new javax.swing.JTextField();
-        txtCodCliente = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtNomeFantasia = new javax.swing.JTextField();
-        txtDataCompetencia = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        rbtContasPagarLanc = new javax.swing.JRadioButton();
-        rbtContasReceberLanc = new javax.swing.JRadioButton();
-        txtDataVenc = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtValorBruto = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        cboFormaPagamento = new javax.swing.JComboBox<>();
-        cboParcela = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        lblInfPagLanc = new javax.swing.JLabel();
+        lblParcela = new javax.swing.JLabel();
+        lblNumTituloLanc = new javax.swing.JLabel();
+        txtNumTituloLanc = new javax.swing.JTextField();
+        txtCodClienteLanc = new javax.swing.JTextField();
+        lblNomeFantasiaLanc = new javax.swing.JLabel();
+        txtNomeFantasiaLanc = new javax.swing.JTextField();
+        txtDataCompetenciaLanc = new javax.swing.JTextField();
+        lblDataCompLanc = new javax.swing.JLabel();
+        optContasPagarLanc = new javax.swing.JRadioButton();
+        optContasReceberLanc = new javax.swing.JRadioButton();
+        txtDataVencLanc = new javax.swing.JTextField();
+        lblDataVencLanc = new javax.swing.JLabel();
+        txtValorBrutoLanc = new javax.swing.JTextField();
+        lblValorBrutoLanc = new javax.swing.JLabel();
+        txtValorDescLanc = new javax.swing.JTextField();
+        lblValorDescLanc = new javax.swing.JLabel();
+        txtValorAcrescimoLanc = new javax.swing.JTextField();
+        lblValorAcrescimoLanc = new javax.swing.JLabel();
+        txtValorLiqLanc = new javax.swing.JTextField();
+        lblValorLiqLanc = new javax.swing.JLabel();
+        lblDadosCliente = new javax.swing.JLabel();
+        lblCodClienteLanc = new javax.swing.JLabel();
+        cmbFormaPagamento = new javax.swing.JComboBox<>();
+        cmbParcela = new javax.swing.JComboBox<>();
+        lblFormaPagLanc = new javax.swing.JLabel();
+        btnSalvarLanc = new javax.swing.JButton();
+        btnCancelarLanc = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Contas a Pagar");
+        setTitle("Financeiro");
 
         jLabel1.setText("Cód. Sócios: ");
 
-        jLabel2.setText("Num. Título:");
+        lblNumTitulo.setText("Num. Título:");
 
-        jButton1.setText("Pesquisar");
+        btnPesquisar.setText("Pesquisar");
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTituloPesq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -97,14 +97,14 @@ public class Financeiro extends javax.swing.JInternalFrame {
                 "Cód. Título", "Cód. Sócio", "Nome Sócio", "Num. Sequencia", "Valor Bruto", "Valor Desconto", "Valor Acrescimo", "Valor Líquido"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblTituloPesq);
 
-        buttonGroup1.add(rbtContasPagar);
-        rbtContasPagar.setSelected(true);
-        rbtContasPagar.setText("Contas a Pagar");
+        buttonGroup1.add(optContasPagarPesq);
+        optContasPagarPesq.setSelected(true);
+        optContasPagarPesq.setText("Contas a Pagar");
 
-        buttonGroup1.add(rbtContasReceber);
-        rbtContasReceber.setText("Contas a Receber");
+        buttonGroup1.add(optContasReceberPesq);
+        optContasReceberPesq.setText("Contas a Receber");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,19 +116,19 @@ public class Financeiro extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodSocioPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(rbtContasPagar))
+                        .addComponent(optContasPagarPesq))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lblNumTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNumTituloPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(rbtContasReceber)))
+                        .addComponent(optContasReceberPesq)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(175, 175, 175))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1)
@@ -141,15 +141,15 @@ public class Financeiro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1))
-                    .addComponent(rbtContasPagar))
+                        .addComponent(txtCodSocioPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPesquisar))
+                    .addComponent(optContasPagarPesq))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(rbtContasReceber))
+                    .addComponent(lblNumTitulo)
+                    .addComponent(txtNumTituloPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar)
+                    .addComponent(optContasReceberPesq))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
@@ -159,85 +159,90 @@ public class Financeiro extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel3.setText("Informações de Pagamento");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        lblInfPagLanc.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblInfPagLanc.setText("Informações de Pagamento");
+        jPanel2.add(lblInfPagLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
-        jLabel4.setText("Parcela:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 110, -1));
+        lblParcela.setText("Parcela:");
+        jPanel2.add(lblParcela, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 110, -1));
 
-        jLabel5.setText("Num. Título:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 37, -1, -1));
+        lblNumTituloLanc.setText("Num. Título:");
+        jPanel2.add(lblNumTituloLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 37, -1, -1));
 
-        txtNumTitulo.setEditable(false);
-        jPanel2.add(txtNumTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 57, 75, -1));
-        jPanel2.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, 75, -1));
+        txtNumTituloLanc.setEditable(false);
+        jPanel2.add(txtNumTituloLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 57, 75, -1));
+        jPanel2.add(txtCodClienteLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, 75, -1));
 
-        jLabel6.setText("Nome Fantasia:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
-        jPanel2.add(txtNomeFantasia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, -1));
-        jPanel2.add(txtDataCompetencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 110, -1));
+        lblNomeFantasiaLanc.setText("Nome Fantasia:");
+        jPanel2.add(lblNomeFantasiaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
+        jPanel2.add(txtNomeFantasiaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, -1));
+        jPanel2.add(txtDataCompetenciaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 110, -1));
 
-        jLabel7.setText("Data Competencia:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 95, -1));
+        lblDataCompLanc.setText("Data Competencia:");
+        jPanel2.add(lblDataCompLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 95, -1));
 
-        buttonGroup2.add(rbtContasPagarLanc);
-        rbtContasPagarLanc.setSelected(true);
-        rbtContasPagarLanc.setText("Contas a Pagar");
-        jPanel2.add(rbtContasPagarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 53, -1, -1));
-
-        buttonGroup2.add(rbtContasReceberLanc);
-        rbtContasReceberLanc.setText("Contas a Receber");
-        jPanel2.add(rbtContasReceberLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 53, -1, -1));
-        jPanel2.add(txtDataVenc, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 100, 100, -1));
-
-        jLabel8.setText("Data Vencimento:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 83, -1, -1));
-        jPanel2.add(txtValorBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 149, 110, -1));
-
-        jLabel9.setText("Valor Bruto:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 129, 75, -1));
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 149, 110, -1));
-
-        jLabel10.setText("Valor Desconto:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 129, 92, -1));
-        jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 149, 110, -1));
-
-        jLabel11.setText("Valor Acréscimo:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 129, 92, -1));
-
-        jTextField11.setEditable(false);
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 149, 110, -1));
-
-        jLabel12.setText("Valor Líquido:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 129, 92, -1));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel13.setText("Dados do Cliente");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        jLabel14.setText("Cód. Cliente:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 37, 75, -1));
-
-        cboFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Dinheiro", "Cartão de Crédito", "Cartão de Débito", "Cheque" }));
-        jPanel2.add(cboFormaPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
-
-        cboParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        cboParcela.addKeyListener(new java.awt.event.KeyAdapter() {
+        buttonGroup2.add(optContasPagarLanc);
+        optContasPagarLanc.setSelected(true);
+        optContasPagarLanc.setText("Contas a Pagar");
+        optContasPagarLanc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                cboParcelaKeyReleased(evt);
+                optContasPagarLancKeyReleased(evt);
             }
         });
-        jPanel2.add(cboParcela, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, -1));
+        jPanel2.add(optContasPagarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 53, -1, -1));
 
-        jLabel15.setText("Forma de Pagamento:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, -1));
+        buttonGroup2.add(optContasReceberLanc);
+        optContasReceberLanc.setText("Contas a Receber");
+        jPanel2.add(optContasReceberLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 53, -1, -1));
+        jPanel2.add(txtDataVencLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 100, 100, -1));
 
-        jButton3.setText("Salvar");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+        lblDataVencLanc.setText("Data Vencimento:");
+        jPanel2.add(lblDataVencLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 83, -1, -1));
+        jPanel2.add(txtValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 149, 110, -1));
 
-        jButton4.setText("Cancelar");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
+        lblValorBrutoLanc.setText("Valor Bruto:");
+        jPanel2.add(lblValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 129, 75, -1));
+        jPanel2.add(txtValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 149, 110, -1));
+
+        lblValorDescLanc.setText("Valor Desconto:");
+        jPanel2.add(lblValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 129, 92, -1));
+        jPanel2.add(txtValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 149, 110, -1));
+
+        lblValorAcrescimoLanc.setText("Valor Acréscimo:");
+        jPanel2.add(lblValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 129, 92, -1));
+
+        txtValorLiqLanc.setEditable(false);
+        jPanel2.add(txtValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 149, 110, -1));
+
+        lblValorLiqLanc.setText("Valor Líquido:");
+        jPanel2.add(lblValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 129, 92, -1));
+
+        lblDadosCliente.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblDadosCliente.setText("Dados do Cliente");
+        jPanel2.add(lblDadosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+
+        lblCodClienteLanc.setText("Cód. Cliente:");
+        jPanel2.add(lblCodClienteLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 37, 75, -1));
+
+        cmbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Dinheiro", "Cartão de Crédito", "Cartão de Débito", "Cheque" }));
+        jPanel2.add(cmbFormaPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
+
+        cmbParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cmbParcela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cmbParcelaKeyReleased(evt);
+            }
+        });
+        jPanel2.add(cmbParcela, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, -1));
+
+        lblFormaPagLanc.setText("Forma de Pagamento:");
+        jPanel2.add(lblFormaPagLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, -1));
+
+        btnSalvarLanc.setText("Salvar");
+        jPanel2.add(btnSalvarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+
+        btnCancelarLanc.setText("Cancelar");
+        jPanel2.add(btnCancelarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
 
         jTabbedPane2.addTab("Lançamentos", jPanel2);
 
@@ -255,59 +260,63 @@ public class Financeiro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void cboParcelaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboParcelaKeyReleased
+    private void cmbParcelaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbParcelaKeyReleased
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_cboParcelaKeyReleased
+    }//GEN-LAST:event_cmbParcelaKeyReleased
+
+    private void optContasPagarLancKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_optContasPagarLancKeyReleased
+        // TODO add your handling code here:        
+    }//GEN-LAST:event_optContasPagarLancKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarLanc;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvarLanc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> cboFormaPagamento;
-    private javax.swing.JComboBox<String> cboParcela;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> cmbFormaPagamento;
+    private javax.swing.JComboBox<String> cmbParcela;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JRadioButton rbtContasPagar;
-    private javax.swing.JRadioButton rbtContasPagarLanc;
-    private javax.swing.JRadioButton rbtContasReceber;
-    private javax.swing.JRadioButton rbtContasReceberLanc;
-    private javax.swing.JTextField txtCodCliente;
-    private javax.swing.JTextField txtDataCompetencia;
-    private javax.swing.JTextField txtDataVenc;
-    private javax.swing.JTextField txtNomeFantasia;
-    private javax.swing.JTextField txtNumTitulo;
-    private javax.swing.JTextField txtValorBruto;
+    private javax.swing.JLabel lblCodClienteLanc;
+    private javax.swing.JLabel lblDadosCliente;
+    private javax.swing.JLabel lblDataCompLanc;
+    private javax.swing.JLabel lblDataVencLanc;
+    private javax.swing.JLabel lblFormaPagLanc;
+    private javax.swing.JLabel lblInfPagLanc;
+    private javax.swing.JLabel lblNomeFantasiaLanc;
+    private javax.swing.JLabel lblNumTitulo;
+    private javax.swing.JLabel lblNumTituloLanc;
+    private javax.swing.JLabel lblParcela;
+    private javax.swing.JLabel lblValorAcrescimoLanc;
+    private javax.swing.JLabel lblValorBrutoLanc;
+    private javax.swing.JLabel lblValorDescLanc;
+    private javax.swing.JLabel lblValorLiqLanc;
+    private javax.swing.JRadioButton optContasPagarLanc;
+    private javax.swing.JRadioButton optContasPagarPesq;
+    private javax.swing.JRadioButton optContasReceberLanc;
+    private javax.swing.JRadioButton optContasReceberPesq;
+    private javax.swing.JTable tblTituloPesq;
+    private javax.swing.JTextField txtCodClienteLanc;
+    private javax.swing.JTextField txtCodSocioPesq;
+    private javax.swing.JTextField txtDataCompetenciaLanc;
+    private javax.swing.JTextField txtDataVencLanc;
+    private javax.swing.JTextField txtNomeFantasiaLanc;
+    private javax.swing.JTextField txtNumTituloLanc;
+    private javax.swing.JTextField txtNumTituloPesq;
+    private javax.swing.JTextField txtValorAcrescimoLanc;
+    private javax.swing.JTextField txtValorBrutoLanc;
+    private javax.swing.JTextField txtValorDescLanc;
+    private javax.swing.JTextField txtValorLiqLanc;
     // End of variables declaration//GEN-END:variables
 }

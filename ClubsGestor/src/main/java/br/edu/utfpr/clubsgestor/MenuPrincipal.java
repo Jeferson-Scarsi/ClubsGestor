@@ -37,6 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnMenuClube = new javax.swing.JButton();
         btnMenuUsuarios = new javax.swing.JButton();
+        btnCategorias = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         bntMenuSocios = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
@@ -47,15 +48,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         mniClube = new javax.swing.JMenuItem();
         mniUsuarios = new javax.swing.JMenuItem();
+        mniCategorias = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mniSocios = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mniSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mniContasPagar = new javax.swing.JMenuItem();
-        mniContasReceber = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mnuRelatorios = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mniSobre = new javax.swing.JMenuItem();
 
@@ -87,6 +94,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnMenuUsuarios);
+
+        btnCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/categoria.png"))); // NOI18N
+        btnCategorias.setText("Categorias");
+        btnCategorias.setFocusable(false);
+        btnCategorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCategorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoriasActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnCategorias);
         jToolBar1.add(jSeparator4);
 
         bntMenuSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/socios.png"))); // NOI18N
@@ -94,6 +113,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bntMenuSocios.setFocusable(false);
         bntMenuSocios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bntMenuSocios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bntMenuSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntMenuSociosActionPerformed(evt);
+            }
+        });
         jToolBar1.add(bntMenuSocios);
         jToolBar1.add(jSeparator5);
 
@@ -123,6 +147,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1.add(btnMenuSair);
 
         jMenu1.setText("Cadastros");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         mniClube.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/visao-da-empresa.png"))); // NOI18N
         mniClube.setText("Clube");
@@ -141,6 +170,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mniUsuarios);
+
+        mniCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/categoria.png"))); // NOI18N
+        mniCategorias.setText("Categorias");
+        mniCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCategoriasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniCategorias);
         jMenu1.add(jSeparator1);
 
         mniSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/socios.png"))); // NOI18N
@@ -167,25 +205,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Financeiro");
 
         mniContasPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/a-pagar.png"))); // NOI18N
-        mniContasPagar.setText("Contas Pagar");
+        mniContasPagar.setText("Financeiro");
         mniContasPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniContasPagarActionPerformed(evt);
             }
         });
         jMenu2.add(mniContasPagar);
-
-        mniContasReceber.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/contas-a-receber.png"))); // NOI18N
-        mniContasReceber.setText("Contas Receber");
-        mniContasReceber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniContasReceberActionPerformed(evt);
-            }
-        });
-        jMenu2.add(mniContasReceber);
         jMenu2.add(jSeparator3);
 
         mnuRelatorios.setText("Relatórios");
+
+        jMenu4.setText("Contas a Receber");
+
+        jMenuItem1.setText("Títulos Vencidos");
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setText("Títulos a Vencer");
+        jMenu4.add(jMenuItem2);
+
+        mnuRelatorios.add(jMenu4);
+
+        jMenu5.setText("Contas a Pagar");
+
+        jMenuItem3.setText("Títulos Vencidos");
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setText("Títulos a Vencer");
+        jMenu5.add(jMenuItem4);
+
+        mnuRelatorios.add(jMenu5);
+
         jMenu2.add(mnuRelatorios);
 
         jMenuBar1.add(jMenu2);
@@ -272,10 +322,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setContentPane(desktopPane);
     }//GEN-LAST:event_mniContasPagarActionPerformed
 
-    private void mniContasReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniContasReceberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniContasReceberActionPerformed
-
     private void btnMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuUsuariosActionPerformed
         // TODO add your handling code here:
         CadastroUsuario janela = new CadastroUsuario();
@@ -293,6 +339,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
         desktopPane.add(janela);
         this.setContentPane(desktopPane);
     }//GEN-LAST:event_btnMenuFinanceiroActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        CategoriaUsuario janela = new CategoriaUsuario();
+        janela.setVisible(true);
+        
+        desktopPane.add(janela);
+        this.setContentPane(desktopPane);
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void bntMenuSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntMenuSociosActionPerformed
+        // TODO add your handling code here:
+        CadastroSocios janela = new CadastroSocios();
+        janela.setVisible(true);
+        
+        desktopPane.add(janela);
+        this.setContentPane(desktopPane);
+    }//GEN-LAST:event_bntMenuSociosActionPerformed
+
+    private void mniCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCategoriasActionPerformed
+        // TODO add your handling code here:
+        CategoriaUsuario janela = new CategoriaUsuario();
+        janela.setVisible(true);
+        
+        desktopPane.add(janela);
+        this.setContentPane(desktopPane);
+    }//GEN-LAST:event_mniCategoriasActionPerformed
+
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
+        // TODO add your handling code here:
+        CategoriaUsuario janela = new CategoriaUsuario();
+        janela.setVisible(true);
+        
+        desktopPane.add(janela);
+        this.setContentPane(desktopPane);
+    }//GEN-LAST:event_btnCategoriasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,6 +413,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntMenuSocios;
+    private javax.swing.JButton btnCategorias;
     private javax.swing.JButton btnMenuClube;
     private javax.swing.JButton btnMenuFinanceiro;
     private javax.swing.JButton btnMenuSair;
@@ -338,7 +421,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -349,9 +438,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem mniCategorias;
     private javax.swing.JMenuItem mniClube;
     private javax.swing.JMenuItem mniContasPagar;
-    private javax.swing.JMenuItem mniContasReceber;
     private javax.swing.JMenuItem mniSair;
     private javax.swing.JMenuItem mniSobre;
     private javax.swing.JMenuItem mniSocios;

@@ -32,16 +32,16 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogin = new javax.swing.JTextField();
-        lblPassword = new javax.swing.JPasswordField();
+        txtLogin = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         lblImageLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - ClubsGestor");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 250, 276, 28));
-        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 324, 276, 28));
+        getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 250, 276, 28));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 324, 276, 28));
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
-        if(lblLogin.getText().equals("admin" ) && lblPassword.getText().equals("admin")){
+        if(txtLogin.getText().equals("admin" ) && txtPassword.getText().equals("admin")){
             MenuPrincipal janelaPrincipal = new MenuPrincipal();
             janelaPrincipal.setVisible(true);
             this.dispose();
@@ -109,7 +109,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel lblImageLogin;
-    private javax.swing.JTextField lblLogin;
-    private javax.swing.JPasswordField lblPassword;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
