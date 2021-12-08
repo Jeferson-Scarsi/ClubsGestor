@@ -57,8 +57,8 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         txtComplemento.setText("");
         txtBairro.setText("");
         txtEmail.setText("");
-        txtFoneComercial.setText("");
-        txtFoneComercial.setText("");       
+        ftxFoneComercial.setText("");
+        ftxFoneComercial.setText("");       
         
         //Habilita a edição do campo
         ftxCPF.setEditable(true);
@@ -71,8 +71,8 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         txtComplemento.setEditable(true);
         txtBairro.setEditable(true);
         txtEmail.setEditable(true);
-        txtFoneComercial.setEditable(true);
-        txtFoneComercial.setEditable(true);       
+        ftxFoneComercial.setEditable(true);
+        ftxFoneComercial.setEditable(true);       
         
         
         tblCategoria.clearSelection();
@@ -476,8 +476,8 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         socioSelecionado.setComplemento(txtComplemento.getText());
         socioSelecionado.setBairro(txtBairro.getText());
         socioSelecionado.setEmail(txtEmail.getText());
-        socioSelecionado.setFonecomercial(txtFoneComercial.getText());
-        socioSelecionado.setFonecelular(txtFoneComercial.getText());
+        socioSelecionado.setFonecomercial(ftxFoneComercial.getText());
+        socioSelecionado.setFonecelular(ftxFoneComercial.getText());
         
         Main.em.getTransaction().begin();
         if (novo){
@@ -510,7 +510,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
             txtComplemento.setText(socioSelecionado.getComplemento());
             txtBairro.setText(socioSelecionado.getBairro());
             txtEmail.setText(socioSelecionado.getEmail());
-            txtFoneComercial.setText(socioSelecionado.getFonecomercial());     
+            ftxFoneComercial.setText(socioSelecionado.getFonecomercial());     
             
             tbpSocios.setSelectedIndex(0);
             
