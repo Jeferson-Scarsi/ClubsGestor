@@ -3,20 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.utfpr.clubsgestor;
+package br.edu.utfpr.view;
+
+import br.edu.utfpr.main.Main;
+import java.beans.PropertyVetoException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.TypedQuery;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jeferson.scarsi
  */
 public class Financeiro extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modeloTabela = new DefaultTableModel();
     /**
      * Creates new form ContasPagar
      */
     public Financeiro() {
         initComponents();
+        try {
+            this.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Financeiro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    private void carregarListaEmpresas(){
+        //Remover linhas existentes
+        while(tblTituloPesq.getRowCount() > 0){
+            modeloTabela.removeRow(0);
+        }
+        
+        String jpql = "select cp from ContasPagar cp";
+        TypedQuery query = Main.em.createQuery(jpql, Financeiro.class);
+        
+        List<Financeiro> lista = query.getResultList();
+        for (Financeiro cp : lista){
+            Object row[] = {
+                
+            };
+            
+            modeloTabela.addRow(row);
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +63,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        tbpFinanceiro = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCodSocioPesq = new javax.swing.JTextField();
@@ -70,17 +104,34 @@ public class Financeiro extends javax.swing.JInternalFrame {
         lblFormaPagLanc = new javax.swing.JLabel();
         btnSalvarLanc = new javax.swing.JButton();
         btnCancelarLanc = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Financeiro");
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("Cód. Sócios: ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 15, -1, -1));
+        jPanel1.add(txtCodSocioPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 12, 130, -1));
 
         lblNumTitulo.setText("Num. Título:");
+        jPanel1.add(lblNumTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 46, -1, -1));
+        jPanel1.add(txtNumTituloPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 43, 130, -1));
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 11, 83, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +139,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 42, 83, -1));
 
         tblTituloPesq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,63 +151,18 @@ public class Financeiro extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblTituloPesq);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 71, 736, 191));
+
         buttonGroup1.add(optContasPagarPesq);
         optContasPagarPesq.setSelected(true);
         optContasPagarPesq.setText("Contas a Pagar");
+        jPanel1.add(optContasPagarPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 11, -1, -1));
 
         buttonGroup1.add(optContasReceberPesq);
         optContasReceberPesq.setText("Contas a Receber");
+        jPanel1.add(optContasReceberPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 42, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodSocioPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(optContasPagarPesq))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNumTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNumTituloPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(optContasReceberPesq)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(175, 175, 175))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtCodSocioPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPesquisar))
-                    .addComponent(optContasPagarPesq))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNumTitulo)
-                    .addComponent(txtNumTituloPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar)
-                    .addComponent(optContasReceberPesq))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
-        );
-
-        jTabbedPane2.addTab("Pesquisar", jPanel1);
+        tbpFinanceiro.addTab("Pesquisar", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -244,17 +251,60 @@ public class Financeiro extends javax.swing.JInternalFrame {
         btnCancelarLanc.setText("Cancelar");
         jPanel2.add(btnCancelarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
 
-        jTabbedPane2.addTab("Lançamentos", jPanel2);
+        tbpFinanceiro.addTab("Lançamentos", jPanel2);
+
+        jToolBar1.setRollover(true);
+
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-24px/botao-adicionar.png"))); // NOI18N
+        btnNovo.setFocusable(false);
+        btnNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnNovo);
+
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-24px/disquete.png"))); // NOI18N
+        btnSalvar.setFocusable(false);
+        btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnSalvar);
+
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-24px/lapis.png"))); // NOI18N
+        btnEditar.setFocusable(false);
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnEditar);
+
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-24px/excluir.png"))); // NOI18N
+        btnExcluir.setFocusable(false);
+        btnExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnExcluir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(tbpFinanceiro)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(tbpFinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 313, Short.MAX_VALUE))
         );
 
         pack();
@@ -273,11 +323,38 @@ public class Financeiro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:        
     }//GEN-LAST:event_optContasPagarLancKeyReleased
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        txtCodClienteLanc.setText("");
+        txtNumTituloLanc.setText("");
+        txtNomeFantasiaLanc.setText("");
+        txtDataCompetenciaLanc.setText("");
+        txtDataVencLanc.setText("");
+        txtValorBrutoLanc.setText("");
+        txtValorDescLanc.setText("");
+        txtValorAcrescimoLanc.setText("");
+        txtValorLiqLanc.setText("");
+        cmbFormaPagamento.setSelectedIndex(0);
+        cmbParcela.setSelectedIndex(0);
+        tbpFinanceiro.setSelectedIndex(1);
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelarLanc;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarLanc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -287,7 +364,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblCodClienteLanc;
     private javax.swing.JLabel lblDadosCliente;
     private javax.swing.JLabel lblDataCompLanc;
@@ -307,6 +384,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton optContasReceberLanc;
     private javax.swing.JRadioButton optContasReceberPesq;
     private javax.swing.JTable tblTituloPesq;
+    private javax.swing.JTabbedPane tbpFinanceiro;
     private javax.swing.JTextField txtCodClienteLanc;
     private javax.swing.JTextField txtCodSocioPesq;
     private javax.swing.JTextField txtDataCompetenciaLanc;

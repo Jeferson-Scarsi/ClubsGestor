@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.utfpr.clubsgestor;
+package br.edu.utfpr.view;
 
+import br.edu.utfpr.main.Main;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author jeferson.scarsi
  */
 public class Login extends javax.swing.JFrame {
-
+    private boolean cancel = true;
     /**
      * Creates new form Login
      */
@@ -39,6 +40,11 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - ClubsGestor");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 250, 276, 28));
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 324, 276, 28));
@@ -60,16 +66,28 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
-        if(txtLogin.getText().equals("admin" ) && txtPassword.getText().equals("admin")){
-            MenuPrincipal janelaPrincipal = new MenuPrincipal();
-            janelaPrincipal.setVisible(true);
-            this.dispose();
-            janelaPrincipal.requestFocus();
-        } else{
-            JOptionPane.showMessageDialog(this, "Erro: login ou senha incorretos!");
-        }
+        if (txtLogin.getText().trim().length() <= 0){
+            JOptionPane.showMessageDialog(this, "Erro: Campo de login não preenchido!");
+        } else if (txtPassword.getText().trim().length() <= 0){
+            JOptionPane.showMessageDialog(this, "Erro: Campo de senha não preenchido!");
+        } else {
+            if(Main.executaLogin(txtLogin.getText(), txtPassword.getText())){
+                MenuPrincipal janelaPrincipal = new MenuPrincipal();
+                janelaPrincipal.setVisible(true);
+                cancel = false;
+                this.dispose();
+                janelaPrincipal.requestFocus();
+            } else{
+                JOptionPane.showMessageDialog(this, "Erro: login ou senha incorretos!");
+            }
+        } 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        if (cancel == true){
+            Main.fecharConexao();
+        }               
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

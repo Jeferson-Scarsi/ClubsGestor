@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.utfpr.clubsgestor;
+package br.edu.utfpr.view;
 
 import javax.swing.JDesktopPane;
 
@@ -11,9 +11,7 @@ import javax.swing.JDesktopPane;
  *
  * @author jeferson.scarsi
  */
-public class MenuPrincipal extends javax.swing.JFrame {
-    
-    JDesktopPane desktopPane = new JDesktopPane();
+public class MenuPrincipal extends javax.swing.JFrame {    
     
     /**
      * Creates new form MenuPrincipal
@@ -44,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnMenuFinanceiro = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JToolBar.Separator();
         btnMenuSair = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mniClube = new javax.swing.JMenuItem();
@@ -145,6 +144,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnMenuSair);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 335, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Cadastros");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -253,13 +263,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 341, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDesktopPane1))
         );
 
         setSize(new java.awt.Dimension(717, 460));
@@ -271,8 +283,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroClube janela = new CadastroClube();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_mniClubeActionPerformed
 
     private void btnMenuClubeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuClubeActionPerformed
@@ -281,8 +293,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroClube janela = new CadastroClube();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_btnMenuClubeActionPerformed
 
     private void mniSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSairActionPerformed
@@ -300,8 +312,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroUsuario janela = new CadastroUsuario();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_mniUsuariosActionPerformed
 
     private void mniSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSociosActionPerformed
@@ -309,8 +321,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroSocios janela = new CadastroSocios();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_mniSociosActionPerformed
 
     private void mniContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniContasPagarActionPerformed
@@ -318,8 +330,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Financeiro janela = new Financeiro();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_mniContasPagarActionPerformed
 
     private void btnMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuUsuariosActionPerformed
@@ -327,8 +339,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroUsuario janela = new CadastroUsuario();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_btnMenuUsuariosActionPerformed
 
     private void btnMenuFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuFinanceiroActionPerformed
@@ -336,17 +348,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Financeiro janela = new Financeiro();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_btnMenuFinanceiroActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-        CategoriaUsuario janela = new CategoriaUsuario();
+        CategoriaSocios janela = new CategoriaSocios();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void bntMenuSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntMenuSociosActionPerformed
@@ -354,26 +366,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroSocios janela = new CadastroSocios();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_bntMenuSociosActionPerformed
 
     private void mniCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCategoriasActionPerformed
         // TODO add your handling code here:
-        CategoriaUsuario janela = new CategoriaUsuario();
+        CategoriaSocios janela = new CategoriaSocios();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_mniCategoriasActionPerformed
 
     private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
         // TODO add your handling code here:
-        CategoriaUsuario janela = new CategoriaUsuario();
+        CategoriaSocios janela = new CategoriaSocios();
         janela.setVisible(true);
         
-        desktopPane.add(janela);
-        this.setContentPane(desktopPane);
+        jDesktopPane1.add(janela);
+        this.setContentPane(jDesktopPane1);
     }//GEN-LAST:event_btnCategoriasActionPerformed
 
     /**
@@ -418,6 +430,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMenuFinanceiro;
     private javax.swing.JButton btnMenuSair;
     private javax.swing.JButton btnMenuUsuarios;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
