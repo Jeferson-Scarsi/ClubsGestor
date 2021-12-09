@@ -182,7 +182,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(mniUsuarios);
 
         mniCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-16px/categoria.png"))); // NOI18N
-        mniCategorias.setText("Categorias");
+        mniCategorias.setText("Cadastros Gerais");
         mniCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniCategoriasActionPerformed(evt);

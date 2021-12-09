@@ -14,27 +14,26 @@ public class Socios implements Serializable {
     private Long idsocio;
     private String nome;
     private String cpf;
-    @ManyToOne
-    private Categorias_Socios categoria;    
+    private String idcategoria;    
     private String cep;
     private String cidade;
     private String endereco;
     private String numero;
     private String complemento;
-    private String uf;
     private String bairro;
     private String fonecomercial;
     private String email;
     private String fonecelular;
+    private String uf;
 
     public Socios() {
     }
 
-    public Socios(Long idsocio, String nome, String cpf, Categorias_Socios categoria, String cep, String cidade, String endereco, String numero, String complemento, String uf, String bairro, String fonecomercial, String email, String fonecelular) {
+    public Socios(Long idsocio, String nome, String cpf, String idcategoria, String cep, String cidade, String endereco, String numero, String complemento, String uf, String bairro, String fonecomercial, String email, String fonecelular) {
         this.idsocio = idsocio;
         this.nome = nome;
         this.cpf = cpf;
-        this.categoria = categoria;
+        this.idcategoria = idcategoria;
         this.cep = cep;
         this.cidade = cidade;
         this.endereco = endereco;
@@ -71,12 +70,12 @@ public class Socios implements Serializable {
         this.cpf = cpf;
     }
 
-    public Categorias_Socios getCategoria() {
-        return categoria;
+    public String getIdcategoria() {
+        return idcategoria;
     }
 
-    public void setCategoria(Categorias_Socios categoria) {
-        this.categoria = categoria;
+    public void setIdcategoria(String idcategoria) {
+        this.idcategoria = idcategoria;
     }
 
     public String getCep() {
@@ -161,10 +160,8 @@ public class Socios implements Serializable {
 
     @Override
     public String toString() {
-        return "Socios{" + "idsocio=" + idsocio + ", nome=" + nome + ", cpf=" + cpf + ", categoria=" + categoria + ", cep=" + cep + ", cidade=" + cidade + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf + ", bairro=" + bairro + ", fonecomercial=" + fonecomercial + ", email=" + email + ", fonecelular=" + fonecelular + '}';
+        return "Socios{" + "idsocio=" + idsocio + ", nome=" + nome + ", cpf=" + cpf + ", idcategoria=" + idcategoria + ", cep=" + cep + ", cidade=" + cidade + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf + ", bairro=" + bairro + ", fonecomercial=" + fonecomercial + ", email=" + email + ", fonecelular=" + fonecelular + '}';
     }
-
-    
 
     
 }

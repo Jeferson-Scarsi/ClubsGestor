@@ -39,8 +39,39 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         initComponents();
         
         modeloTabela = (DefaultTableModel) tblSocios.getModel();
+        carregarListaEmpresas();
         
-        carregarListaSocios();
+    }
+    
+    private void carregarListaEmpresas(){
+        //Remover linhas existentes
+        while(tblSocios.getRowCount() > 0){
+            modeloTabela.removeRow(0);
+        }
+        
+        String jpql = "select s from Socios s";
+        TypedQuery query = Main.em.createQuery(jpql, Socios.class);
+        
+        List<Socios> lista = query.getResultList();
+        /*for (Empresa e : lista){
+            Object row[] = {
+                e.getIdempresa(),
+                e.getCnpj(),
+                e.getRazaosocial(),
+                e.getNomefantasia(),                
+                e.getCep(),
+                e.getCidade(),
+                e.getEndereco(),
+                e.getNumero(),
+                e.getComplemento(),
+                e.getBairro(),
+                e.getFonecomercial(),
+                e.getEmail()
+            };
+            
+            modeloTabela.addRow(row);
+        }*/
+        
     }
     
     private void novoSocio(){
@@ -90,28 +121,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         
     }
     
-    private void carregarListaSocios(){
-        //Remover linhas existentes
-        while(tblSocios.getRowCount() > 0){
-            modeloTabela.removeRow(0);
-        }
-        
-        String jpql = "select s from Socios s";
-        TypedQuery query = Main.em.createQuery(jpql, Socios.class);
-        
-        List<Socios> lista = query.getResultList();
-        for (Socios s : lista){
-            Object row[] = {
-                s.getIdsocio(),
-                s.getNome(),
-                s.getCpf(),
-                s.getCategoria()
-            };
-            
-            modeloTabela.addRow(row);
-        }
-        
-    }
+    
     
     private boolean validarCampos(){
         
@@ -500,7 +510,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         socioSelecionado.setCep(ftxCEP.getText().replace(".", "").replace("-", ""));
         
         Categorias_Socios categoriaSelecionada = cmbCategoria.getItemAt(cmbCategoria.getSelectedIndex());
-        socioSelecionado.setCategoria(categoriaSelecionada);
+        socioSelecionado.setIdcategoria(categoriaSelecionada);
         
         socioSelecionado.setCidade(txtCidade.getText());
         socioSelecionado.setEndereco(txtEndereco.getText());
@@ -536,7 +546,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
             socioSelecionado = Main.em.find(Socios.class, id);
             ftxCPF.setText(socioSelecionado.getCpf().toString());
             txtNomeCompleto.setText(socioSelecionado.getNome());
-            cmbCategoria.setSelectedItem(socioSelecionado.getCategoria());
+            cmbCategoria.setSelectedItem(socioSelecionado.getIdcategoria());
             ftxCEP.setText(socioSelecionado.getCep());
             txtCidade.setText(socioSelecionado.getCidade());
             txtEndereco.setText(socioSelecionado.getEndereco());
