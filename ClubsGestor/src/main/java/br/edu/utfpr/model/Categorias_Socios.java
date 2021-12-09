@@ -60,8 +60,12 @@ public class Categorias_Socios implements Serializable {
 
     @Override
     public String toString() {
-        return descrcategoria;
+        return idcategoria + " - " + descrcategoria;
     }
+
+    
+    
+    
 
         
         

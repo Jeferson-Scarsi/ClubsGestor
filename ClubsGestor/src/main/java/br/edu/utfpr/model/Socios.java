@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Socios implements Serializable {
@@ -13,13 +14,14 @@ public class Socios implements Serializable {
     private Long idsocio;
     private String nome;
     private String cpf;
-    private Categorias_Socios idcategoria;
-    private Long nrocarteirinha;
+    @ManyToOne
+    private Categorias_Socios categoria;    
     private String cep;
     private String cidade;
     private String endereco;
     private String numero;
     private String complemento;
+    private String uf;
     private String bairro;
     private String fonecomercial;
     private String email;
@@ -28,17 +30,17 @@ public class Socios implements Serializable {
     public Socios() {
     }
 
-    public Socios(Long idsocio, String nome, String cpf, Categorias_Socios idcategoria, Long nrocarteirinha, String cep, String cidade, String endereco, String numero, String complemento, String bairro, String fonecomercial, String email, String fonecelular) {
+    public Socios(Long idsocio, String nome, String cpf, Categorias_Socios categoria, String cep, String cidade, String endereco, String numero, String complemento, String uf, String bairro, String fonecomercial, String email, String fonecelular) {
         this.idsocio = idsocio;
         this.nome = nome;
         this.cpf = cpf;
-        this.idcategoria = idcategoria;
-        this.nrocarteirinha = nrocarteirinha;
+        this.categoria = categoria;
         this.cep = cep;
         this.cidade = cidade;
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;
+        this.uf = uf;
         this.bairro = bairro;
         this.fonecomercial = fonecomercial;
         this.email = email;
@@ -69,20 +71,12 @@ public class Socios implements Serializable {
         this.cpf = cpf;
     }
 
-    public Categorias_Socios getIdcategoria() {
-        return idcategoria;
+    public Categorias_Socios getCategoria() {
+        return categoria;
     }
 
-    public void setIdcategoria(Categorias_Socios idcategoria) {
-        this.idcategoria = idcategoria;
-    }
-
-    public Long getNrocarteirinha() {
-        return nrocarteirinha;
-    }
-
-    public void setNrocarteirinha(Long nrocarteirinha) {
-        this.nrocarteirinha = nrocarteirinha;
+    public void setCategoria(Categorias_Socios categoria) {
+        this.categoria = categoria;
     }
 
     public String getCep() {
@@ -125,6 +119,14 @@ public class Socios implements Serializable {
         this.complemento = complemento;
     }
 
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
     public String getBairro() {
         return bairro;
     }
@@ -159,7 +161,10 @@ public class Socios implements Serializable {
 
     @Override
     public String toString() {
-        return "Socios{" + "idsocio=" + idsocio + ", nome=" + nome + ", cpf=" + cpf + ", idcategoria=" + idcategoria + ", nrocarteirinha=" + nrocarteirinha + ", cep=" + cep + ", cidade=" + cidade + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento + ", bairro=" + bairro + ", fonecomercial=" + fonecomercial + ", email=" + email + ", fonecelular=" + fonecelular + '}';
+        return "Socios{" + "idsocio=" + idsocio + ", nome=" + nome + ", cpf=" + cpf + ", categoria=" + categoria + ", cep=" + cep + ", cidade=" + cidade + ", endereco=" + endereco + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf + ", bairro=" + bairro + ", fonecomercial=" + fonecomercial + ", email=" + email + ", fonecelular=" + fonecelular + '}';
     }
+
+    
+
     
 }

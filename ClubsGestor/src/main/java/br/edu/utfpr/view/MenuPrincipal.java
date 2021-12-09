@@ -95,7 +95,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1.add(btnMenuUsuarios);
 
         btnCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens-32px/categoria.png"))); // NOI18N
-        btnCategorias.setText("Categorias");
+        btnCategorias.setText("Cadastros Gerais");
         btnCategorias.setFocusable(false);
         btnCategorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCategorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -354,7 +354,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-        CategoriaSocios janela = new CategoriaSocios();
+        ConfiguracoesGerais janela = new ConfiguracoesGerais();
         janela.setVisible(true);
         
         jDesktopPane1.add(janela);
@@ -372,7 +372,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void mniCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCategoriasActionPerformed
         // TODO add your handling code here:
-        CategoriaSocios janela = new CategoriaSocios();
+        ConfiguracoesGerais janela = new ConfiguracoesGerais();
         janela.setVisible(true);
         
         jDesktopPane1.add(janela);
@@ -381,7 +381,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
         // TODO add your handling code here:
-        CategoriaSocios janela = new CategoriaSocios();
+        ConfiguracoesGerais janela = new ConfiguracoesGerais();
         janela.setVisible(true);
         
         jDesktopPane1.add(janela);

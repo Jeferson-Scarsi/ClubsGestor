@@ -35,21 +35,18 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
      * Creates new form CadastroCLube
      */
     public CadastroSocios() {
+        
         initComponents();
         
-        btnEditar.setEnabled(false);
-        btnExcluir.setEnabled(false);
-        carregarListaCategorias();
+        modeloTabela = (DefaultTableModel) tblSocios.getModel();
         
-        
-        
+        carregarListaSocios();
     }
     
     private void novoSocio(){
         // Limpa os campos para digitar um registro novo        
         ftxCPF.setText("");
         txtNomeCompleto.setText("");
-        txtNumCarteirinha.setText("");
         ftxCEP.setText("");
         txtCidade.setText("");
         txtEndereco.setText("");
@@ -75,7 +72,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         ftxFoneComercial.setEditable(true);       
         
         
-        tblCategoria.clearSelection();
+        tblSocios.clearSelection();
         socioSelecionado = null;
         
     }
@@ -89,6 +86,29 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         List<Categorias_Socios> lista = query.getResultList();
         for (Categorias_Socios c : lista ){
             cmbCategoria.addItem(c);
+        }
+        
+    }
+    
+    private void carregarListaSocios(){
+        //Remover linhas existentes
+        while(tblSocios.getRowCount() > 0){
+            modeloTabela.removeRow(0);
+        }
+        
+        String jpql = "select s from Socios s";
+        TypedQuery query = Main.em.createQuery(jpql, Socios.class);
+        
+        List<Socios> lista = query.getResultList();
+        for (Socios s : lista){
+            Object row[] = {
+                s.getIdsocio(),
+                s.getNome(),
+                s.getCpf(),
+                s.getCategoria()
+            };
+            
+            modeloTabela.addRow(row);
         }
         
     }
@@ -178,8 +198,6 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         lblCNPJ = new javax.swing.JLabel();
         txtNomeCompleto = new javax.swing.JTextField();
         lblRazaoSocial = new javax.swing.JLabel();
-        txtNumCarteirinha = new javax.swing.JTextField();
-        lblNomeFantasia = new javax.swing.JLabel();
         cmbCategoria = new javax.swing.JComboBox<>();
         lblCNPJ1 = new javax.swing.JLabel();
         lblEnderecoContato = new javax.swing.JLabel();
@@ -207,7 +225,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         ftxFoneComercial = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCategoria = new javax.swing.JTable();
+        tblSocios = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -235,12 +253,6 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
 
         lblRazaoSocial.setText("Nome Completo:");
         jPanel1.add(lblRazaoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 57, -1, -1));
-
-        txtNumCarteirinha.setEditable(false);
-        jPanel1.add(txtNumCarteirinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 77, 123, 25));
-
-        lblNomeFantasia.setText("Número Carteirinha:");
-        jPanel1.add(lblNomeFantasia, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 57, -1, -1));
 
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,7 +364,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
 
         tbpSocios.addTab("Cadastro", jScrollPane1);
 
-        tblCategoria.setModel(new javax.swing.table.DefaultTableModel(
+        tblSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -360,10 +372,24 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cód.", "Nome Sócio", "CPF", "Categoria"
             }
-        ));
-        jScrollPane2.setViewportView(tblCategoria);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblSocios);
+        if (tblSocios.getColumnModel().getColumnCount() > 0) {
+            tblSocios.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblSocios.getColumnModel().getColumn(1).setMaxWidth(500);
+            tblSocios.getColumnModel().getColumn(2).setMaxWidth(150);
+            tblSocios.getColumnModel().getColumn(3).setMaxWidth(500);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -441,7 +467,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbpSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -452,7 +478,9 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbCategoriaActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        tbpSocios.setSelectedIndex(0);
         novoSocio();
+        carregarListaCategorias();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -467,17 +495,21 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
             socioSelecionado = new Socios();
         }
         
-        socioSelecionado.setCpf(ftxCPF.getText());
+        socioSelecionado.setCpf(ftxCPF.getText().replace(".", "").replace("-", ""));
         socioSelecionado.setNome(txtNomeCompleto.getText());
-        socioSelecionado.setCpf(ftxCEP.getText());
+        socioSelecionado.setCep(ftxCEP.getText().replace(".", "").replace("-", ""));
+        
+        Categorias_Socios categoriaSelecionada = cmbCategoria.getItemAt(cmbCategoria.getSelectedIndex());
+        socioSelecionado.setCategoria(categoriaSelecionada);
+        
         socioSelecionado.setCidade(txtCidade.getText());
         socioSelecionado.setEndereco(txtEndereco.getText());
         socioSelecionado.setNumero(txtNumero.getText());
         socioSelecionado.setComplemento(txtComplemento.getText());
         socioSelecionado.setBairro(txtBairro.getText());
         socioSelecionado.setEmail(txtEmail.getText());
-        socioSelecionado.setFonecomercial(ftxFoneComercial.getText());
-        socioSelecionado.setFonecelular(ftxFoneComercial.getText());
+        socioSelecionado.setFonecomercial(ftxFoneComercial.getText().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+        socioSelecionado.setFonecelular(ftxFoneComercial.getText().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
         
         Main.em.getTransaction().begin();
         if (novo){
@@ -490,6 +522,7 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
         novoSocio();
         
         carregarListaCategorias();
+        //carregarListaSocios();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -497,20 +530,23 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tblCategoria.getSelectedRow() != -1){
-            Long id = (Long) modeloTabela.getValueAt(tblCategoria.getSelectedRow(), 0);
+        if (tblSocios.getSelectedRow() != -1){
+            Long id = (Long) modeloTabela.getValueAt(tblSocios.getSelectedRow(), 0);
             
             socioSelecionado = Main.em.find(Socios.class, id);
             ftxCPF.setText(socioSelecionado.getCpf().toString());
             txtNomeCompleto.setText(socioSelecionado.getNome());
-            txtNumCarteirinha.setText(socioSelecionado.getNrocarteirinha().toString());
+            cmbCategoria.setSelectedItem(socioSelecionado.getCategoria());
+            ftxCEP.setText(socioSelecionado.getCep());
             txtCidade.setText(socioSelecionado.getCidade());
             txtEndereco.setText(socioSelecionado.getEndereco());
             txtNumero.setText(socioSelecionado.getNumero());
             txtComplemento.setText(socioSelecionado.getComplemento());
+            txtUF.setText(socioSelecionado.getUf());
             txtBairro.setText(socioSelecionado.getBairro());
             txtEmail.setText(socioSelecionado.getEmail());
             ftxFoneComercial.setText(socioSelecionado.getFonecomercial());     
+            ftxFoneCelular.setText(socioSelecionado.getFonecelular());
             
             tbpSocios.setSelectedIndex(0);
             
@@ -546,11 +582,10 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEnderecoContato;
     private javax.swing.JLabel lblFoneCelular;
     private javax.swing.JLabel lblFoneComercial;
-    private javax.swing.JLabel lblNomeFantasia;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRazaoSocial;
     private javax.swing.JLabel lblUF;
-    private javax.swing.JTable tblCategoria;
+    private javax.swing.JTable tblSocios;
     private javax.swing.JTabbedPane tbpSocios;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;
@@ -558,7 +593,6 @@ public class CadastroSocios extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNomeCompleto;
-    private javax.swing.JTextField txtNumCarteirinha;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtUF;
     // End of variables declaration//GEN-END:variables

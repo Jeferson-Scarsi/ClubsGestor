@@ -7,6 +7,8 @@ package br.edu.utfpr.view;
 
 import br.edu.utfpr.main.Main;
 import java.beans.PropertyVetoException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +33,25 @@ public class Financeiro extends javax.swing.JInternalFrame {
         }
     }
     
-    private void carregarListaEmpresas(){
+    private void novoTitulo(){
+        txtCodClienteLanc.setEditable(true);
+        txtNomeFantasiaLanc.setEditable(true);
+        ftxDataCompetenciaLanc.setEditable(true);
+        
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+        ftxDataCompetenciaLanc.setText(formatter.format(date).toString());
+        ftxDataVencLanc.setText(formatter.format(date).toString());
+        
+        ftxValorBrutoLanc.setEditable(true);
+        ftxValorDescLanc.setEditable(true);
+        ftxValorAcrescimoLanc.setEditable(true);
+        
+        //tblEmpresas.clearSelection();
+        //empresaSelecionada = null;        
+    }
+    
+    /*private void carregarListaEmpresas(){
         //Remover linhas existentes
         while(tblTituloPesq.getRowCount() > 0){
             modeloTabela.removeRow(0);
@@ -49,7 +69,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
             modeloTabela.addRow(row);
         }
         
-    }
+    }*/
     
 
     /**
@@ -83,27 +103,24 @@ public class Financeiro extends javax.swing.JInternalFrame {
         txtCodClienteLanc = new javax.swing.JTextField();
         lblNomeFantasiaLanc = new javax.swing.JLabel();
         txtNomeFantasiaLanc = new javax.swing.JTextField();
-        txtDataCompetenciaLanc = new javax.swing.JTextField();
         lblDataCompLanc = new javax.swing.JLabel();
         optContasPagarLanc = new javax.swing.JRadioButton();
         optContasReceberLanc = new javax.swing.JRadioButton();
-        txtDataVencLanc = new javax.swing.JTextField();
         lblDataVencLanc = new javax.swing.JLabel();
-        txtValorBrutoLanc = new javax.swing.JTextField();
         lblValorBrutoLanc = new javax.swing.JLabel();
-        txtValorDescLanc = new javax.swing.JTextField();
         lblValorDescLanc = new javax.swing.JLabel();
-        txtValorAcrescimoLanc = new javax.swing.JTextField();
         lblValorAcrescimoLanc = new javax.swing.JLabel();
-        txtValorLiqLanc = new javax.swing.JTextField();
         lblValorLiqLanc = new javax.swing.JLabel();
         lblDadosCliente = new javax.swing.JLabel();
         lblCodClienteLanc = new javax.swing.JLabel();
-        cmbFormaPagamento = new javax.swing.JComboBox<>();
         cmbParcela = new javax.swing.JComboBox<>();
         lblFormaPagLanc = new javax.swing.JLabel();
-        btnSalvarLanc = new javax.swing.JButton();
-        btnCancelarLanc = new javax.swing.JButton();
+        ftxDataCompetenciaLanc = new javax.swing.JFormattedTextField();
+        ftxDataVencLanc = new javax.swing.JFormattedTextField();
+        ftxValorBrutoLanc = new javax.swing.JFormattedTextField();
+        ftxValorDescLanc = new javax.swing.JFormattedTextField();
+        ftxValorAcrescimoLanc = new javax.swing.JFormattedTextField();
+        ftxValorLiqLanc = new javax.swing.JFormattedTextField();
         jToolBar1 = new javax.swing.JToolBar();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -178,12 +195,15 @@ public class Financeiro extends javax.swing.JInternalFrame {
 
         txtNumTituloLanc.setEditable(false);
         jPanel2.add(txtNumTituloLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 57, 75, -1));
+
+        txtCodClienteLanc.setEditable(false);
         jPanel2.add(txtCodClienteLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, 75, -1));
 
         lblNomeFantasiaLanc.setText("Nome Fantasia:");
         jPanel2.add(lblNomeFantasiaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
+
+        txtNomeFantasiaLanc.setEditable(false);
         jPanel2.add(txtNomeFantasiaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, -1));
-        jPanel2.add(txtDataCompetenciaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 110, -1));
 
         lblDataCompLanc.setText("Data Competencia:");
         jPanel2.add(lblDataCompLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 95, -1));
@@ -201,28 +221,21 @@ public class Financeiro extends javax.swing.JInternalFrame {
         buttonGroup2.add(optContasReceberLanc);
         optContasReceberLanc.setText("Contas a Receber");
         jPanel2.add(optContasReceberLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 53, -1, -1));
-        jPanel2.add(txtDataVencLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 100, 100, -1));
 
         lblDataVencLanc.setText("Data Vencimento:");
         jPanel2.add(lblDataVencLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 83, -1, -1));
-        jPanel2.add(txtValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 149, 110, -1));
 
         lblValorBrutoLanc.setText("Valor Bruto:");
-        jPanel2.add(lblValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 129, 75, -1));
-        jPanel2.add(txtValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 149, 110, -1));
+        jPanel2.add(lblValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 75, -1));
 
         lblValorDescLanc.setText("Valor Desconto:");
-        jPanel2.add(lblValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 129, 92, -1));
-        jPanel2.add(txtValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 149, 110, -1));
+        jPanel2.add(lblValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 92, -1));
 
         lblValorAcrescimoLanc.setText("Valor Acréscimo:");
-        jPanel2.add(lblValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 129, 92, -1));
-
-        txtValorLiqLanc.setEditable(false);
-        jPanel2.add(txtValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 149, 110, -1));
+        jPanel2.add(lblValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 92, -1));
 
         lblValorLiqLanc.setText("Valor Líquido:");
-        jPanel2.add(lblValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 129, 92, -1));
+        jPanel2.add(lblValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 92, -1));
 
         lblDadosCliente.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblDadosCliente.setText("Dados do Cliente");
@@ -230,9 +243,6 @@ public class Financeiro extends javax.swing.JInternalFrame {
 
         lblCodClienteLanc.setText("Cód. Cliente:");
         jPanel2.add(lblCodClienteLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 37, 75, -1));
-
-        cmbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Dinheiro", "Cartão de Crédito", "Cartão de Débito", "Cheque" }));
-        jPanel2.add(cmbFormaPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
 
         cmbParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         cmbParcela.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -245,11 +255,38 @@ public class Financeiro extends javax.swing.JInternalFrame {
         lblFormaPagLanc.setText("Forma de Pagamento:");
         jPanel2.add(lblFormaPagLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, -1));
 
-        btnSalvarLanc.setText("Salvar");
-        jPanel2.add(btnSalvarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+        ftxDataCompetenciaLanc.setEditable(false);
+        try {
+            ftxDataCompetenciaLanc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(ftxDataCompetenciaLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 120, -1));
 
-        btnCancelarLanc.setText("Cancelar");
-        jPanel2.add(btnCancelarLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
+        ftxDataVencLanc.setEditable(false);
+        try {
+            ftxDataVencLanc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(ftxDataVencLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 110, -1));
+
+        ftxValorBrutoLanc.setEditable(false);
+        jPanel2.add(ftxValorBrutoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 110, -1));
+
+        ftxValorDescLanc.setEditable(false);
+        jPanel2.add(ftxValorDescLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 110, -1));
+
+        ftxValorAcrescimoLanc.setEditable(false);
+        jPanel2.add(ftxValorAcrescimoLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 120, -1));
+
+        ftxValorLiqLanc.setEditable(false);
+        ftxValorLiqLanc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxValorLiqLancActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ftxValorLiqLanc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 110, -1));
 
         tbpFinanceiro.addTab("Lançamentos", jPanel2);
 
@@ -304,7 +341,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(tbpFinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 313, Short.MAX_VALUE))
+                .addComponent(tbpFinanceiro, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
         );
 
         pack();
@@ -324,18 +361,7 @@ public class Financeiro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_optContasPagarLancKeyReleased
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        txtCodClienteLanc.setText("");
-        txtNumTituloLanc.setText("");
-        txtNomeFantasiaLanc.setText("");
-        txtDataCompetenciaLanc.setText("");
-        txtDataVencLanc.setText("");
-        txtValorBrutoLanc.setText("");
-        txtValorDescLanc.setText("");
-        txtValorAcrescimoLanc.setText("");
-        txtValorLiqLanc.setText("");
-        cmbFormaPagamento.setSelectedIndex(0);
-        cmbParcela.setSelectedIndex(0);
-        tbpFinanceiro.setSelectedIndex(1);
+        novoTitulo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -346,20 +372,27 @@ public class Financeiro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    private void ftxValorLiqLancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxValorLiqLancActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxValorLiqLancActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCancelarLanc;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnSalvarLanc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> cmbFormaPagamento;
     private javax.swing.JComboBox<String> cmbParcela;
+    private javax.swing.JFormattedTextField ftxDataCompetenciaLanc;
+    private javax.swing.JFormattedTextField ftxDataVencLanc;
+    private javax.swing.JFormattedTextField ftxValorAcrescimoLanc;
+    private javax.swing.JFormattedTextField ftxValorBrutoLanc;
+    private javax.swing.JFormattedTextField ftxValorDescLanc;
+    private javax.swing.JFormattedTextField ftxValorLiqLanc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -387,14 +420,8 @@ public class Financeiro extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane tbpFinanceiro;
     private javax.swing.JTextField txtCodClienteLanc;
     private javax.swing.JTextField txtCodSocioPesq;
-    private javax.swing.JTextField txtDataCompetenciaLanc;
-    private javax.swing.JTextField txtDataVencLanc;
     private javax.swing.JTextField txtNomeFantasiaLanc;
     private javax.swing.JTextField txtNumTituloLanc;
     private javax.swing.JTextField txtNumTituloPesq;
-    private javax.swing.JTextField txtValorAcrescimoLanc;
-    private javax.swing.JTextField txtValorBrutoLanc;
-    private javax.swing.JTextField txtValorDescLanc;
-    private javax.swing.JTextField txtValorLiqLanc;
     // End of variables declaration//GEN-END:variables
 }
